@@ -17,24 +17,56 @@ document.querySelectorAll('[data-location]').forEach(link => {
     document.querySelector('select[name="location"]').value = link.dataset.location;
   });
 });
-document.querySelector('#callback').addEventListener('submit', event => {
+// document.querySelector('#callback').addEventListener('submit', event => {
+//   event.preventDefault();
+//   const form = event.currentTarget;
+//   const phone = form.elements.phone;
+//   phone.setCustomValidity(phone.value.replace(/\D/g, '').length < 7 ? 'Please enter a phone number with at least 7 digits.' : '');
+//   if (!form.reportValidity()) return;
+//   const data = new FormData(form);
+//   const message = `Hello Asthra, I would like a callback.\nName: ${data.get('name').trim()}\nPhone: ${data.get('phone').trim()}\nPreferred location: ${data.get('location')}\nCare required: ${data.get('care')}\n${data.get('message').trim()}`;
+//   const url = `https://wa.me/919566076720?text=${encodeURIComponent(message)}`;
+//   const status = form.querySelector('.form-status');
+//   status.replaceChildren();
+//   const link = document.createElement('a');
+//   link.href = url;
+//   link.target = '_blank';
+//   link.rel = 'noopener noreferrer';
+//   link.textContent = 'Continue to WhatsApp to send your callback request ↗';
+//   status.append(link);
+//   link.focus();
+// });
+const form = document.querySelector('#callback');
+
+// Clear any custom phone error as the user edits
+form.elements.phone.addEventListener('input', e => e.target.setCustomValidity(''));
+
+form.addEventListener('submit', event => {
   event.preventDefault();
-  const form = event.currentTarget;
+
   const phone = form.elements.phone;
-  phone.setCustomValidity(phone.value.replace(/\D/g, '').length < 7 ? 'Please enter a phone number with at least 7 digits.' : '');
+  phone.setCustomValidity(
+    phone.value.replace(/\D/g, '').length < 7
+      ? 'Please enter a phone number with at least 7 digits.'
+      : ''
+  );
   if (!form.reportValidity()) return;
+
   const data = new FormData(form);
-  const message = `Hello Asthra, I would like a callback.\nName: ${data.get('name').trim()}\nPhone: ${data.get('phone').trim()}\nPreferred location: ${data.get('location')}\nCare required: ${data.get('care')}\n${data.get('message').trim()}`;
+  const message =
+    `Hello Asthra, I would like a callback.\n` +
+    `Name: ${data.get('name').trim()}\n` +
+    `Phone: ${data.get('phone').trim()}\n` +
+    `Preferred location: ${data.get('location')}\n` +
+    `Care required: ${data.get('care')}\n` +
+    `Additional Info: ${data.get('message').trim()}`;
+
   const url = `https://wa.me/919566076720?text=${encodeURIComponent(message)}`;
-  const status = form.querySelector('.form-status');
-  status.replaceChildren();
-  const link = document.createElement('a');
-  link.href = url;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.textContent = 'Continue to WhatsApp to send your callback request ↗';
-  status.append(link);
-  link.focus();
+
+  // Open WhatsApp directly
+  window.open(url, '_blank');
+
+  form.reset();
 });
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
