@@ -27,7 +27,7 @@
       <nav id="navigation" aria-label="Main navigation">
         <a href="#home">Home</a><a href="#about">About</a
         ><a href="#services">Services</a><a href="#locations">Locations</a
-        ><a href="#life">Gallery</a><a href="#resources">Resources</a
+        ><a href="#life">Gallery</a><a href="#pricing">Pricing</a
         ><a href="#contact">Contact</a
         ><a class="button navy small" href="#callback">Book a Visit ↗</a>
       </nav>
@@ -89,11 +89,10 @@
               <li>Comfortable and secure living spaces</li>
               <li>Medical support with 24/7 nursing</li>
               <li>Engaging activities and a welcoming community</li>
-            </ul>
+            </ul><div class="actions"><a class="button outline" href="#callback">Arrange a Home Visit ↗</a></div>
           </div>
           <form class="callback" id="callback">
-            <h3>Let’s find their happy place.</h3>
-            <p>Tell us a little about yourself. We’re here to help.</p>
+            <p class="eyebrow">LET’S TALK ABOUT YOUR FAMILY</p><h3>Find the care that feels right.</h3><p>Share a few details to discuss care, room options and pricing with our team.</p>
             <label
               >Your name<input
                 name="name"
@@ -108,7 +107,7 @@
                 autocomplete="tel"
                 placeholder="Your phone number"
                 required
-                pattern="[+0-9 ()-]{7,20}" /></label
+                pattern="\+?[0-9][0-9\s\(\)\-]{5,18}[0-9]" inputmode="tel" title="Enter a phone number with at least 7 digits" /></label
             ><label
               >Preferred location<select name="location" required>
                 <option value="">Select a location</option>
@@ -119,18 +118,18 @@
                 <option>Tondiarpet</option>
                 <option>Porur</option>
               </select></label
-            ><label
+            ><label>Care you’re looking for<select name="care"><option>Help me choose</option><option>Assisted living</option><option>Memory care</option><option>Recovery & rehabilitation</option><option>Care at home</option></select></label><label
               >Your message<textarea
                 name="message"
                 placeholder="How can we help? (optional)"
                 rows="2"
                 maxlength="500"
               ></textarea></label
-            ><button class="button" type="submit">Request a Callback ↗</button>
+            ><button class="button" type="submit">Discuss My Care Options ↗</button>
             <p class="fine">
-              Opens WhatsApp with your request. Send it to connect.
+              Continue on WhatsApp to send your enquiry. Your details are used to discuss your care needs.
             </p>
-            <p class="form-status" role="status"></p>
+            <p class="form-status" role="status"></p><a class="form-call" href="tel:+916379242616">Prefer a conversation? Call +91 63792 42616</a>
           </form>
         </div>
         <div class="container trust-strip">
@@ -244,19 +243,19 @@
           </div>
         </div>
       </section>
-      <section class="care-plan">
+      <section class="care-plan" id="pricing">
         <div class="container plan-grid">
           <div class="orange-card">
             <p class="eyebrow">PERSONALIZED SENIOR LIVING IN CHENNAI</p>
-            <h2 style="display: inline;">₹55,000 </h2><span>/ month onwards*</span>
+            <p class="price-caption">Personalised care. Everyday comfort.</p><h2 class="price">₹55,000 <span>/ month onwards*</span></h2>
             <p>
               Let’s talk about their needs and find the right care,<br />room
               and daily support.
             </p>
-            <a class="button white" href="#callback">Get Pricing Details ↗</a>
+            <a class="button white" href="#callback" data-enquiry="I would like a personalised quote and details of what is included in the monthly care plan.">Get My Personalised Quote ↗</a><p class="price-note">*Starting price. Final pricing depends on location, room choice and care needs. Confirm inclusions and availability with our team.</p>
           </div>
           <div class="plan-details">
-            <h3>More comfort. More peace of mind.</h3>
+            <h3>Support for the everyday. Clarity for your family.</h3>
             <ul class="feature-list">
               <li>Comfortable rooms</li>
               <li>Medication support</li>
@@ -269,12 +268,12 @@
             </ul>
             <div class="actions">
               <a class="button outline orange" href="#facilities"
-                >Find Your Care Plan</a
+                >Explore Our Facilities</a
               ><a class="button outline" href="tel:+916379242616"
-                >Talk to Our Team</a
+                >☎ Discuss Pricing</a
               >
             </div>
-          </div>
+<div class="pricing-footnote"><span>Not sure which care option fits?</span><a href="#callback" data-enquiry="Please help me choose a suitable care plan and arrange a visit.">Let’s find it together ↗</a></div>          </div>
         </div>
       </section>
       <section class="section" id="locations">
@@ -447,38 +446,13 @@
             <h2>Small moments. Meaningful connections.</h2>
             <p>There’s a place for belonging in every day.</p>
           </div>
-          <div class="story-grid">
-            <article class="story photo-story">
-              <img
-                src="../img/retirement-home-service-chennai.jpg"
-                alt="A moment of companionship"
-                loading="lazy"
-              />
-              <div>
-                <p class="eyebrow">COMPANIONSHIP</p>
-                <h3>Someone to share the day with.</h3>
-                <p>
-                  A friendly face, a listening ear and conversations that make a
-                  house a home.
-                </p>
-              </div>
-            </article>
-            <article class="story peach">
-              <span class="story-symbol">♡</span>
-              <p class="eyebrow">FAMILY FIRST</p>
-              <h3>Your family is part of ours.</h3>
-              <p>
-                Stay connected and involved in your loved one’s care, every step
-                of the way.
-              </p>
-            </article>
-            <article class="story navy">
-              <span class="story-symbol">“</span>
-              <p class="eyebrow">OUR PROMISE</p>
-              <h3>Care with dignity.<br />Always.</h3>
-              <p>Personal attention, everyday kindness and independence.</p>
-            </article>
-          </div>
+          <div class="family-videos-heading"><div><p class="eyebrow">REAL STORIES. PERSONAL EXPERIENCES.</p><h3>Hear their stories, in their own words.</h3></div><span class="video-count">4 video testimonials</span></div><div class="family-video-grid"><article class="family-video"><button class="testimonial-play" type="button" data-video="FYn32cjj6No" aria-label="Play family testimonial 1"><img src="https://i.ytimg.com/vi/FYn32cjj6No/hqdefault.jpg" data-fallback="../img/retirement-home-service-chennai.jpg" alt="Video testimonial 1" loading="lazy"><span class="play-button" aria-hidden="true">▶</span><span class="video-number">FAMILY STORY 01</span></button><div><h3>A family’s experience</h3><a href="https://www.youtube.com/watch?v=FYn32cjj6No" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></article><article class="family-video"><button class="testimonial-play" type="button" data-video="EuMEeEVgMOA" aria-label="Play family testimonial 2"><img src="https://i.ytimg.com/vi/EuMEeEVgMOA/hqdefault.jpg" data-fallback="../img/retirement-home-service-chennai.jpg" alt="Video testimonial 2" loading="lazy"><span class="play-button" aria-hidden="true">▶</span><span class="video-number">FAMILY STORY 02</span></button><div><h3>A family’s experience</h3><a href="https://www.youtube.com/watch?v=EuMEeEVgMOA" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></article><article class="family-video"><button class="testimonial-play" type="button" data-video="GEmsB05-t-E" aria-label="Play family testimonial 3"><img src="https://i.ytimg.com/vi/GEmsB05-t-E/hqdefault.jpg" data-fallback="../img/retirement-home-service-chennai.jpg" alt="Video testimonial 3" loading="lazy"><span class="play-button" aria-hidden="true">▶</span><span class="video-number">FAMILY STORY 03</span></button><div><h3>A family’s experience</h3><a href="https://www.youtube.com/watch?v=GEmsB05-t-E" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></article><article class="family-video"><button class="testimonial-play" type="button" data-video="uGSB3ES3FPg" aria-label="Play family testimonial 4"><img src="https://i.ytimg.com/vi/uGSB3ES3FPg/hqdefault.jpg" data-fallback="../img/retirement-home-service-chennai.jpg" alt="Video testimonial 4" loading="lazy"><span class="play-button" aria-hidden="true">▶</span><span class="video-number">FAMILY STORY 04</span></button><div><h3>A family’s experience</h3><a href="https://www.youtube.com/watch?v=uGSB3ES3FPg" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></article></div>
+          <div class="google-review-panel"><div class="google-review-intro"><span class="google-word" aria-label="Google"><b>G</b><b>o</b><b>o</b><b>g</b><b>l</b><b>e</b></span><p class="eyebrow">FAMILY EXPERIENCES ON GOOGLE</p><h3>A little reassurance.<br>From people who’ve been there.</h3><p>Explore the experiences shared on our Google Business profile, and bring your questions when you visit.</p><a class="button white" href="https://share.google/jiKk15f6Es38dCyQm" target="_blank" rel="noopener noreferrer">Read Our Google Reviews ↗</a></div><div class="review-highlight"><span class="review-quote-mark" aria-hidden="true">“</span><p class="eyebrow">IN THEIR OWN WORDS</p><h3>Care that makes a difference, every day.</h3><p>From thoughtful meals to everyday companionship, these families and residents share what life at Asthra means to them.</p><a class="button outline" href="#callback">Meet Our Caring Team ↗</a></div></div><div class="google-reviews-grid"><article class="review-card"><header class="review-person"><span class="review-avatar avatar-0" aria-hidden="true">AS</span><div><h4><a href="https://www.google.com/maps/contrib/118052951188165088373/reviews?hl=en-GB" target="_blank" rel="noopener noreferrer">Aravind Seetharaman</a></h4><span>Google review</span></div><span class="review-google-icon" aria-hidden="true">G</span></header><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote id="review-text-0" class="review-text">Reasonable price
+Had nice experience. Very Caring, Supportive and Matured Behaviourial Staffs. On time quality foods and snacks. Keeping clients engaged through activities Birthday and festive Celebrations, etc Overall good..</blockquote><button type="button" class="review-expand" aria-expanded="false" aria-controls="review-text-0">Read full review <span aria-hidden="true">＋</span></button></article><article class="review-card"><header class="review-person"><span class="review-avatar avatar-1" aria-hidden="true">SP</span><div><h4>Siva pandiyan</h4><span>Google review</span></div><span class="review-google-icon" aria-hidden="true">G</span></header><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote id="review-text-1" class="review-text">I am pleased to share our great experience with Asthra, Karapakkam facility where they take care of my mother. The facility is very good, caring for elders and the accommodation is quite comfortable and makes one feel at home. The entire staff there is very resident oriented and take care to make sure the stay is comfortable. Asthra is also very helpful to look at the individual needs and customize food based on dietary needs. They have options for caretaker including 24 hour caretaker coverage which we found to be well managed. They have medical staff onboard who monitor and advise on health updates. Asthra&#x27;s activities for residents keep them engaged socially with a variety of programs including entertainment and easy to do workout sessions. Overall, we find Asthra at Karapakkam to be an excellent facility for entrusting parents/elders who need care and support. Our thanks to all the staff there for their responsive and caring services.</blockquote><button type="button" class="review-expand" aria-expanded="false" aria-controls="review-text-1">Read full review <span aria-hidden="true">＋</span></button></article><article class="review-card"><header class="review-person"><span class="review-avatar avatar-2" aria-hidden="true">GN</span><div><h4>Giritharan Nataraj</h4><span>Google review</span></div><span class="review-google-icon" aria-hidden="true">G</span></header><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote id="review-text-2" class="review-text">I&#x27;m Giritharan staying in Asthra senior living home here, I&#x27;m very happy to staying Manager Janaki and Chief nurse Divya are so kind to me they take care me for whatever I need and the requirement and their fullfill all my desires.The housekeeping is very good they keeps cleaning and every corner of my room and fully satisfied with their service and the food is delivered very good and tasty.And they prepare food according to my taste.So many nurses are working here all are very kind enough with me.While going walking one nurse accompany with me in morning and evening.They are behaving with me like my Granddaughters I wish them success and all their future efforts.. Especially I would like to mention the cook Mrs.Yashoda who preparing food in high standard and good taste.And she gives me whatever the change are any alternative food if I required at any time..I wish success of Mrs.Janaki team in their efforts..Once again I&#x27;m thanking to Miss.l Divya for her wonderful service and treatment to their suppodinates nurses.Am very happy to staying here.Thank you..</blockquote><button type="button" class="review-expand" aria-expanded="false" aria-controls="review-text-2">Read full review <span aria-hidden="true">＋</span></button></article><article class="review-card"><header class="review-person"><span class="review-avatar avatar-3" aria-hidden="true">GG</span><div><h4>Gokhila gokhila</h4><span>Google review</span></div><span class="review-google-icon" aria-hidden="true">G</span></header><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote id="review-text-3" class="review-text">My experience with Asthra Senior Living Home has been very positive. The environment is clean, peaceful, and well-maintained. The staff are caring, supportive, and attentive to residents&#x27; needs. The food quality and daily services are satisfactory, and the overall atmosphere provides comfort and safety for senior citizens.
+
+Thank you to the entire team for their dedication and service.</blockquote><button type="button" class="review-expand" aria-expanded="false" aria-controls="review-text-3">Read full review <span aria-hidden="true">＋</span></button></article></div>
+          <dialog class="video-dialog" aria-labelledby="video-dialog-title"><div class="video-dialog-header"><h3 id="video-dialog-title">A family’s experience at Asthra</h3><button type="button" class="video-close" aria-label="Close video">✕</button></div><div class="video-player"></div><p>Having trouble playing? <a class="video-external" href="https://www.youtube.com/@asthraseniorlivinghome" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p></dialog>
+          <div class="testimonial-cta"><p>A conversation can make the next step feel easier.</p><a class="button" href="#callback">Plan Your Family’s Visit ↗</a></div>
         </div>
       </section>
       <section class="comparison peach section">
