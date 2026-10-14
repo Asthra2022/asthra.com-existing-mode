@@ -213,6 +213,104 @@ summary:focus-visible {
   color: #8a98a0;
   margin-top: 18px;
 }
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* The first photo preserves the existing image-based height. */
+.hero-carousel .hero-slide:first-child {
+  position: relative;
+}
+
+.hero-carousel .hero-slide:not(:first-child) {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-carousel .hero-slide {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  pointer-events: none;
+}
+
+.hero-carousel .hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-carousel .hero-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soft faded overlay without changing the hero layout. */
+.hero-carousel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 238, 0.06) 0%,
+    rgba(255, 248, 238, 0) 45%,
+    rgba(35, 29, 23, 0.32) 100%
+  );
+}
+
+.hero-carousel-dots {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  gap: 3px;
+  transform: translateX(-50%);
+}
+
+.hero-carousel-dots button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero-carousel-dots button::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.hero-carousel-dots button.is-active::before {
+  width: 24px;
+  background: #fff;
+}
+
+.hero-carousel-dots button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel .hero-slide,
+  .hero-carousel-dots button::before {
+    transition: none;
+  }
+}
 .hero {
   background: #f4f9fc;
   overflow: hidden;
@@ -246,7 +344,7 @@ summary:focus-visible {
 .mini-benefits {
   display: flex;
   gap: 14px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: var(--navy);
   margin: 24px 0;
@@ -466,9 +564,19 @@ summary:focus-visible {
     box-shadow 0.2s,
     transform 0.2s;
 }
+.services-cd-icon {
+  margin-right: auto;
+  margin-bottom: 18px;
+  margin-left: auto;
+  width: 48px;
+}
 .service-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 25px #0d3c6810;
+}
+.containee {
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .service-card > span {
   color: var(--orange);
@@ -477,7 +585,8 @@ summary:focus-visible {
   margin-bottom: 13px;
 }
 .service-card h3 {
-  font-size: 14px;
+  font-size: 20px;
+  /* font-weight: 100; */
   letter-spacing: 0;
   min-height: 30px;
   margin: 0 0 14px;
@@ -493,6 +602,71 @@ summary:focus-visible {
   width: 24px;
   height: 24px;
 }
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  align-items: center;
+}
+
+.counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.counter-item strong {
+  font-size: 38px;
+  font-weight: 800;
+  color: #f6f7f9;
+  line-height: 1.2;
+}
+
+.counter-item small {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f7f7f7;
+  line-height: 1.5;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .trust-strip {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 15px;
+  }
+
+  .counter-item strong {
+    font-size: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 12px;
+    padding: 25px 10px;
+  }
+
+  .counter-item strong {
+    font-size: 28px;
+  }
+
+  .counter-item small {
+    font-size: 12px;
+  }
+
+  .counter-item:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -520,7 +694,7 @@ summary:focus-visible {
   border: 1px solid #ffd2b5;
   border-radius: 25px;
   padding: 6px 11px;
-  color: #aa7655;
+  color: #aa4d13;
 }
 .facility-photos .room {
   height: 265px;
@@ -593,7 +767,7 @@ summary:focus-visible {
 .location-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 20px;
 }
 .location-card {
   border: 1px solid var(--line);
@@ -601,13 +775,13 @@ summary:focus-visible {
   overflow: hidden;
 }
 .location-card img {
-  height: 120px;
+  height: 320px;
 }
 .location-card > div {
   padding: 14px 11px;
 }
 .location-card h3 {
-  font-size: 14px;
+  font-size: 20px;
   letter-spacing: -0.2px;
   min-height: 29px;
   margin: 0;
@@ -1223,13 +1397,20 @@ body {
   font-size: 17px;
 }
 .eyebrow {
-  font-size: 12px;
+  /* font-size: 12px; */
+    font-size: 16px;
+  font-weight: 800;
+}
+.assisted-hero {
+  font-size: 26px;
+  letter-spacing: 0ch;
+  color: var(--orange);
 }
 .section-heading p:not(.eyebrow) {
   font-size: 16px;
 }
 .fine {
-  font-size: 13px;
+  font-size: 16px;
 }
 .intro-grid {
   grid-template-columns: 0.85fr 1.1fr 1.15fr;
@@ -1261,7 +1442,7 @@ body {
   padding: 28px;
 }
 .callback .eyebrow {
-  font-size: 11px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 .callback h3 {
@@ -1326,7 +1507,7 @@ body {
   box-shadow: 0 14px 28px #ff6b0814;
 }
 .orange-card .eyebrow {
-  font-size: 11px;
+  font-size: 16px;
 }
 .orange-card .price-caption {
   font-size: 17px;
@@ -1658,7 +1839,7 @@ body {
     font-size: 12px;
   }
   .routine-grid h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .routine-grid p {
     font-size: 13px;
@@ -1819,7 +2000,7 @@ body {
 }
 .google-review-intro .eyebrow {
   color: #ffa76b;
-  font-size: 11px;
+  font-size: 16px;
 }
 .review-invitation {
   background: #f7fafc;
@@ -1916,6 +2097,7 @@ body {
 }
 .review-card {
   background: white;
+  height: 390px;
   border: 1px solid #e3eaf0;
   border-radius: 14px;
   padding: 26px;
@@ -2073,17 +2255,18 @@ body {
   font-weight: bold;
 }
 .review-card .review-stars {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   font-size: 21px;
   color: #b07800;
 }
 .review-card .review-text {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  /* -webkit-line-clamp: 5; */
   -webkit-box-orient: vertical;
-  overflow: hidden;
-  white-space: pre-line;
-  margin: 16px 0 18px;
+  /* overflow: hidden; */
+  /* white-space: pre-line; */
+  margin-top: 0px;
+  /* margin: 16px 0 18px; */
   font-size: 16px;
   line-height: 1.8;
   overflow-wrap: anywhere;
@@ -2125,5 +2308,14 @@ body {
   }
   .review-person h4 {
     font-size: 16px;
+  }
+  .hero-photo {
+    display: none;
+  }
+  .assisted-hero {
+    font-size: 18px !important;
+  }
+  .mini-benefits {
+    font-size: 14px;
   }
 }
