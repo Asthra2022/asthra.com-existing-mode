@@ -564,6 +564,23 @@ summary:focus-visible {
     box-shadow 0.2s,
     transform 0.2s;
 }
+.service-card .services-cd-icon { 
+  box-sizing: content-box;
+  width: 52px;
+  height: 52px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #c9631f;
+  color: #ffffff;               /* icon colour (strokes use currentColor) */
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(244, 123, 32, .35);
+  transition: transform .25s ease;
+}
+/* .service-card:hover .services-cd-icon { transform: scale(1.08); }
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  } */
 .services-cd-icon {
   margin-right: auto;
   margin-bottom: 18px;
@@ -652,6 +669,7 @@ summary:focus-visible {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px 12px;
     padding: 25px 10px;
+    display: none;
   }
 
   .counter-item strong {
