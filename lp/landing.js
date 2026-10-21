@@ -1,23 +1,35 @@
 'use strict';
-const toggle = document.querySelector('.menu-toggle');
-const navigation = document.querySelector('#navigation');
-toggle.addEventListener('click', () => {
-  const open = toggle.getAttribute('aria-expanded') !== 'true';
-  toggle.setAttribute('aria-expanded', String(open));
-  navigation.classList.toggle('open', open);
-});
-navigation.addEventListener('click', event => {
-  if (event.target.closest('a')) {
-    toggle.setAttribute('aria-expanded', 'false');
-    navigation.classList.remove('open');
-  }
-});
+// const toggle = document.querySelector('.menu-toggle');
+// const navigation = document.querySelector('#navigation');
+// toggle.addEventListener('click', () => {
+//   const open = toggle.getAttribute('aria-expanded') !== 'true';
+//   toggle.setAttribute('aria-expanded', String(open));
+//   navigation.classList.toggle('open', open);
+// });
+// navigation.addEventListener('click', event => {
+//   if (event.target.closest('a')) {
+//     toggle.setAttribute('aria-expanded', 'false');
+//     navigation.classList.remove('open');
+//   }
+// });
 document.querySelectorAll('[data-location]').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('select[name="location"]').value = link.dataset.location;
   });
 });
+ const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
 
+  document.querySelectorAll(".facility-photos img").forEach((img) => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.showModal();
+    });
+  });
+
+  // Close when clicking the backdrop, the image, or the × button
+  lightbox.addEventListener("click", () => lightbox.close());
 
 document.addEventListener("DOMContentLoaded", function () {
   const section = document.querySelector(".trust-strip");
