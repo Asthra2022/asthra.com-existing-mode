@@ -13,3 +13,21 @@ h1,h2,h3,.section-heading {font-family:'Playfair Display',Georgia,serif;}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 @media(max-width:760px){body{padding-bottom:72px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* Repository images and playable family stories. */
+.brand-logo{width:130px;height:auto;object-fit:contain}
+.family-video-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:28px}
+.family-video{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}
+.testimonial-play{position:relative;display:block;width:100%;padding:0;border:0;background:var(--navy);cursor:pointer;aspect-ratio:9/12;overflow:hidden}
+.testimonial-play img{height:100%;object-fit:cover;transition:transform .25s}
+.testimonial-play:hover img{transform:scale(1.04)}
+.play-button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:50%;width:52px;height:52px;padding-left:3px;background:#fff;color:var(--orange);font-size:21px;box-shadow:var(--shadow)}
+.family-video>div{padding:16px}.family-video h3{font-size:16px;margin:0 0 12px}.family-video a{color:var(--orange2);font-size:12px;font-weight:700}
+.video-dialog{width:min(900px,calc(100% - 24px));max-height:90dvh;padding:20px;border:0;border-radius:16px;color:var(--ink);overflow:auto}
+.video-dialog::backdrop{background:#071b33d9}
+.video-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.video-dialog-header h3{margin:0;font-size:20px}.video-close{border:0;border-radius:50%;width:44px;height:44px;flex-shrink:0;cursor:pointer;background:var(--cream);color:var(--navy);font-size:22px}
+.video-player{aspect-ratio:16/9;background:#071b33}.video-player iframe{display:block;border:0;width:100%;height:100%}
+.video-dialog p{font-size:13px}.video-external{color:var(--orange2);text-decoration:underline}
+@media(max-width:760px){.family-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.video-player{aspect-ratio:9/16;max-height:65dvh}.video-dialog-header h3{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.testimonial-play img{transition:none}}
