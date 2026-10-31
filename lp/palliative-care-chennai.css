@@ -18,7 +18,13 @@ select,
 textarea {
   font: inherit;
 }
-
+.routine-grid svg {
+  width: 30px;
+  height: 30px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+}
 /* Original M1 styles */
 .model-m1 {
   --sanas: "Outfit", "Segoe UI", system-ui, sans-serif;
@@ -906,7 +912,45 @@ textarea {
   transform: translateY(-6px);
   box-shadow: var(--shadow-sm);
 }
-.model-m1 .routine-grid i,
+
+
+/* Orange circle with white icons */
+.model-m1 .routine-grid > div > i {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #ff7818, #dc5300);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #ffffff;
+  box-shadow: 0 6px 12px rgba(226, 92, 0, 0.15);
+  font-style: normal;
+}
+
+/* Lucide SVG icons */
+.routine-grid > div > i svg {
+  width: 25px;
+  height: 25px;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  fill: none;
+}
+
+/* Responsive circle */
+@media (max-width: 768px) {
+  .routine-grid > div > i {
+    width: 52px;
+    height: 52px;
+  }
+
+  .routine-grid > div > i svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
 .model-m1 .steps-grid b {
   display: grid;
   place-items: center;

@@ -304,6 +304,8 @@ summary:focus-visible {
   outline-offset: 2px;
   border-radius: 8px;
 }
+.palliative-gallery{padding:64px 0 76px;background:#fff}.palliative-gallery .section-heading{margin-bottom:32px}.palliative-gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:180px;gap:12px}.palliative-gallery .gallery-tile{position:relative;overflow:hidden;border-radius:13px;margin:0;background:#e9e5df}.palliative-gallery .gallery-large{grid-column:span 2;grid-row:span 2}.palliative-gallery .gallery-wide{grid-column:span 2}.palliative-gallery .gallery-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}.palliative-gallery .gallery-tile:hover img{transform:scale(1.035)}.palliative-gallery figcaption{position:absolute;bottom:10px;left:10px;color:#fff;background:rgba(35,30,27,.77);font:700 12px/1.3 "Outfit",sans-serif;border-radius:20px;padding:7px 12px}.palliative-gallery .gallery-tile:after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.16));pointer-events:none}@media(max-width:700px){.palliative-gallery{padding:48px 0}.palliative-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:155px;gap:9px}.palliative-gallery .gallery-large{grid-column:span 2;grid-row:span 2}.palliative-gallery .gallery-wide{grid-column:span 2}}
+
 
 @media (prefers-reduced-motion: reduce) {
   .hero-carousel .hero-slide,
