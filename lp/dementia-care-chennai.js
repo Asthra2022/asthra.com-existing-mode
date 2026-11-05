@@ -20,6 +20,176 @@ document.querySelectorAll('[data-location]').forEach(link => {
   lightbox.addEventListener("click", () => lightbox.close());
 
 document.addEventListener("DOMContentLoaded", function () {
+  const gallery = document.querySelector(".palliative-gallery-grid");
+  if (!gallery) return;
+
+  const tiles = [...gallery.querySelectorAll(".gallery-tile")];
+  const images = tiles.map(tile => ({
+    src: tile.querySelector("img")?.src,
+    alt: tile.querySelector("img")?.alt || "",
+    caption: tile.querySelector("figcaption")?.textContent || ""
+  })).filter(item => item.src);
+
+  if (!images.length) return;
+
+  const lightbox = document.createElement("div");
+  lightbox.className = "asthra-lightbox";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+  lightbox.setAttribute("aria-label", "Image gallery");
+  lightbox.innerHTML = `
+    <button class="asthra-lightbox-btn asthra-lightbox-close"
+      aria-label="Close gallery">&times;</button>
+    <button class="asthra-lightbox-btn asthra-lightbox-zoom"
+      aria-label="Zoom image">+</button>
+    <button class="asthra-lightbox-btn asthra-lightbox-prev"
+      aria-label="Previous image">&#10094;</button>
+    <img class="asthra-lightbox-image" alt="">
+    <button class="asthra-lightbox-btn asthra-lightbox-next"
+      aria-label="Next image">&#10095;</button>
+    <div class="asthra-lightbox-caption" aria-live="polite"></div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const image = lightbox.querySelector(".asthra-lightbox-image");
+  const caption = lightbox.querySelector(".asthra-lightbox-caption");
+  const zoomBtn = lightbox.querySelector(".asthra-lightbox-zoom");
+  const closeBtn = lightbox.querySelector(".asthra-lightbox-close");
+
+  let currentIndex = 0;
+  let isZoomed = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let previousFocus = null;
+  let previousOverflow = "";
+
+  function resetZoom() {
+    isZoomed = false;
+    image.classList.remove("zoomed");
+    zoomBtn.textContent = "+";
+    zoomBtn.setAttribute("aria-label", "Zoom in");
+  }
+
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    resetZoom();
+
+    const item = images[currentIndex];
+    image.src = item.src;
+    image.alt = item.alt;
+    caption.textContent =
+      `${item.caption} (${currentIndex + 1} / ${images.length})`;
+  }
+
+  function openGallery(index) {
+    previousFocus = document.activeElement;
+    previousOverflow = document.body.style.overflow;
+    showImage(index);
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  }
+
+  function closeGallery() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = previousOverflow;
+    resetZoom();
+    previousFocus?.focus();
+  }
+
+  function nextImage() {
+    showImage(currentIndex + 1);
+  }
+
+  function previousImage() {
+    showImage(currentIndex - 1);
+  }
+
+  // function toggleZoom() {
+  //   isZoomed = !isZoomed;
+  //   image.classList.toggle("zoomed", isZoomed);
+  //   zoomBtn.textContent = isZoomed ? "−" : "+";
+  //   zoomBtn.setAttribute(
+  //     "aria-label",
+  //     isZoomed ? "Zoom out" : "Zoom in"
+  //   );
+  // }
+
+  tiles.forEach((tile, index) => {
+    tile.style.cursor = "pointer";
+    tile.setAttribute("tabindex", "0");
+    tile.setAttribute("role", "button");
+    tile.setAttribute("aria-label", "Enlarge gallery image");
+
+    tile.addEventListener("click", () => openGallery(index));
+
+    tile.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openGallery(index);
+      }
+    });
+  });
+
+  closeBtn.addEventListener("click", closeGallery);
+  // zoomBtn.addEventListener("click", toggleZoom);
+  // image.addEventListener("click", toggleZoom);
+
+  lightbox.querySelector(".asthra-lightbox-next")
+    .addEventListener("click", nextImage);
+
+  lightbox.querySelector(".asthra-lightbox-prev")
+    .addEventListener("click", previousImage);
+
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) closeGallery();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (!lightbox.classList.contains("active")) return;
+
+    if (e.key === "Escape") closeGallery();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") previousImage();
+
+    // Keep keyboard focus inside the modal.
+    if (e.key === "Tab") {
+      const controls = [...lightbox.querySelectorAll("button")];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // Mobile swipe navigation
+  lightbox.addEventListener("touchstart", e => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", e => {
+    if (isZoomed) return;
+
+    const diffX = e.changedTouches[0].screenX - touchStartX;
+    const diffY = e.changedTouches[0].screenY - touchStartY;
+
+    if (Math.abs(diffX) > 50 &&
+        Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX < 0) nextImage();
+      else previousImage();
+    }
+  }, { passive: true });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
   const section = document.querySelector(".trust-strip");
   if (!section) return;
 

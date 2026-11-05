@@ -106,15 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
     showImage(currentIndex - 1);
   }
 
-  function toggleZoom() {
-    isZoomed = !isZoomed;
-    image.classList.toggle("zoomed", isZoomed);
-    zoomBtn.textContent = isZoomed ? "−" : "+";
-    zoomBtn.setAttribute(
-      "aria-label",
-      isZoomed ? "Zoom out" : "Zoom in"
-    );
-  }
+  // function toggleZoom() {
+  //   isZoomed = !isZoomed;
+  //   image.classList.toggle("zoomed", isZoomed);
+  //   zoomBtn.textContent = isZoomed ? "−" : "+";
+  //   zoomBtn.setAttribute(
+  //     "aria-label",
+  //     isZoomed ? "Zoom out" : "Zoom in"
+  //   );
+  // }
 
   tiles.forEach((tile, index) => {
     tile.style.cursor = "pointer";
@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   closeBtn.addEventListener("click", closeGallery);
-  zoomBtn.addEventListener("click", toggleZoom);
-  image.addEventListener("click", toggleZoom);
+  // zoomBtn.addEventListener("click", toggleZoom);
+  // image.addEventListener("click", toggleZoom);
 
   lightbox.querySelector(".asthra-lightbox-next")
     .addEventListener("click", nextImage);
